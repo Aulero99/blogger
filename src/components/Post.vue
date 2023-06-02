@@ -7,6 +7,12 @@
       <p>
         {{ post.ComputeContent }}
       </p>
+      <div class="d-flex flex-row creator">
+        <img class="img-fluid creator-img" :src="post.creatorImg" alt="">
+        <p>
+          Posted on: {{ post.date }}
+        </p>
+      </div>
     </div>
     <div class="post-img">
       <img class="img-fluid" :src="post.imgUrl" alt="">
@@ -21,10 +27,8 @@ export default {
   props: {
     post: { type: Post, required: true }
   },
-  setup(props) {
+  setup() {
     return {
-      x: props.post
-
     }
   }
 }
@@ -37,18 +41,42 @@ export default {
 }
 
 .post-img {
-  width: 30%;
-  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
 }
 
 .post-img img {
   object-fit: cover;
   border-radius: 0.25rem;
   width: 100%;
-  height: 100%;
+  max-height: 10rem;
+  aspect-ratio: 1/1;
 }
 
 .post-body {
   max-width: 70%;
+}
+
+p{
+  all: unset;
+}
+
+.creator{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.creator-img{
+  object-fit: cover;
+  border-radius: 50%;
+  height: 100%;
+  max-height: 3rem;
+  aspect-ratio: 1/1;
+  margin-right: 0.5rem;
 }
 </style>
